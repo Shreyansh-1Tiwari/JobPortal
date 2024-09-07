@@ -7,8 +7,13 @@ import userRoute from "./routes/userRoute.js";
 import companyRoute from "./routes/companyRoute.js"
 import jobRoute from "./routes/jobRoute.js"
 import applicationRoute from "./routes/applicationRoute.js"
+import path from "path"
 
 dotenv.config({})
+
+const PORT = process.env.PORT || 3000;
+
+const __dirname = path.resolve();
 
 const app = express();
 //middlewares
@@ -20,8 +25,6 @@ const corsOptions = {
     credentials:true
 }
 app.use(cors(corsOptions));
-
-const PORT = process.env.PORT || 3000;
 
 app.get("/home" , (req , res) => {
     return res.status(200).json({
@@ -35,6 +38,11 @@ app.use("/api/v1/user" , userRoute);
 app.use("/api/v1/company" , companyRoute);
 app.use("/api/v1/job" , jobRoute);
 app.use("/api/v1/application" , applicationRoute);
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get("*" , (req,res)=>{
+    res.sendFile(path.resolve(__dirname , "frontend" , "dist" , "index.html"))
+})
 
 app.listen(PORT , () => {
     connectdb();
