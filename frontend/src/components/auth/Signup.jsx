@@ -87,7 +87,7 @@ function Signup() {
                 value={input.fullname}
                 name="fullname"
                 onChange={changeEventHandler}
-                placeholder="Tiwari"
+                placeholder="Full name"
             />
           </div>
           <div className="my-2">
@@ -97,7 +97,7 @@ function Signup() {
                 value={input.email}
                 name="email"
                 onChange={changeEventHandler}
-                placeholder="Tiwari@g.com" 
+                placeholder="Email" 
             />
           </div>
           <div className="my-2">
@@ -107,7 +107,7 @@ function Signup() {
                 value={input.phoneNumber}
                 name="phoneNumber"
                 onChange={changeEventHandler}
-                placeholder="9999999999" 
+                placeholder="contact no." 
             />
           </div>
           <div className="my-2">
